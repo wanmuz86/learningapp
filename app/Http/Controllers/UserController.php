@@ -20,6 +20,7 @@ class UserController extends VoyagerBreadController {
         $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
         $data->courses()->sync($request->input('courses', []));
+        $data->badges()->sync($request->input('badges', []));
 
         return redirect()
             ->route("voyager.{$dataType->slug}.index")
