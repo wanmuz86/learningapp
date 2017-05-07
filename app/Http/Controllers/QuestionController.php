@@ -18,7 +18,14 @@ class QuestionController extends VoyagerBreadController
 
         $data = call_user_func([$dataType->model_name, 'findOrFail'], $id);
         $this->insertUpdateData($request, $slug, $dataType->editRows, $data);
-
+        
+        foreach ($request->input('answers',[]) as $answer ){
+            $answer = $data->answeroptions()->create([
+                'title' => $answer,
+                'question_id' => $data->id,
+                ]);
+        }
+    
 //        $data->tags()->sync($request->input('tags', []));
 
         return redirect()
@@ -40,9 +47,25 @@ class QuestionController extends VoyagerBreadController
 
         $data = new $dataType->model_name();
         $this->insertUpdateData($request, $slug, $dataType->addRows, $data);
-		var_dump($request->input('answers',[]));
-        exit();
-     //   $data->tags()->sync($request->input('tags', []));
+        $answers = $request->input('answers',[]) ;
+        $correct_answer = $request->input('correct_answer');
+      
+        for ($i=0; $i< count($answers); $i++ ){
+            if ($i== $correct_answer){
+            $answer = $data->answeroptions()->create([
+                'text' => $answers[$i],
+                'question_id' => $data->id,
+                'iscorrect' => 1,
+                ]);
+        }
+        else  {
+            $answer = $data->answeroptions()->create([
+                'text' => $answers[$i],
+                'question_id' => $data->id,
+                'iscorrect' => 0,
+                ]);
+        }
+        }
 
         return redirect()
             ->route("voyager.{$dataType->slug}.index")
