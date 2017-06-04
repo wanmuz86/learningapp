@@ -13,6 +13,7 @@ class Lesson extends Model
 
 public function users()
     {
-        return $this->belongsToMany(\TCG\Voyager\Models\User::class, 'lessons_users');
+        return $this->belongsToMany(User::class, 'lessons_users');
     }
+    
 }

@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Course extends Model
 {
+    protected $hidden = ['pivot'];
      public function users()
     {
         return $this->belongsToMany(\TCG\Voyager\Models\User::class, 'courses_users');

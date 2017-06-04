@@ -2,11 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Course;
+use TCG\Voyager\Models\User;
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBreadController as VoyagerBreadController;
 use TCG\Voyager\Facades\Voyager;
+use Illuminate\Support\Collection;
 class CourseController extends VoyagerBreadController
 {
+    
     // POST BR(E)AD
     public function update(Request $request, $id)
     {
@@ -50,5 +54,7 @@ class CourseController extends VoyagerBreadController
                 'alert-type' => 'success',
             ]);
     }
+    
+
    
 }

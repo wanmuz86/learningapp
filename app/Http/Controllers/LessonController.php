@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Lesson;
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBreadController as VoyagerBreadController;
 use TCG\Voyager\Facades\Voyager;
@@ -14,7 +15,7 @@ class LessonController extends VoyagerBreadController
      */
     public function __construct()
     {
-        $this->middleware('auth');
+     //   $this->middleware('auth');
     }
 
     /**
@@ -27,7 +28,6 @@ class LessonController extends VoyagerBreadController
     {
         $slug = 'lessons';
         $dataType = Voyager::model('DataType')->where('slug', '=', 'lessons')->first();
-        $course = Course::
         // Check permission
         Voyager::canOrFail('add_'.$dataType->name);
 
@@ -47,5 +47,23 @@ class LessonController extends VoyagerBreadController
         return view('lessons/create', compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'id'));
       
     }
-   
+ 
+
+
+ /* Api related controller */
+
+
+ public function getLesson($id)
+    {
+        $lesson = Lesson::find($id);
+        return response()->json($lesson);
+    }
+
+     public function getLessonold($id)
+    {
+        $lesson = Lesson::find($id);
+        
+        return response()->json($lesson);
+    }
+  
 }

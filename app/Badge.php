@@ -11,4 +11,8 @@ class Badge extends Model
     {
         return $this->belongsToMany(\TCG\Voyager\Models\User::class, 'badge_issued');
     }
+
+    public function courseId() {
+    	 return $this->belongsTo(Course::class);
+    }
 }
