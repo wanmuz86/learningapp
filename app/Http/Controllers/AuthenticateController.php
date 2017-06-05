@@ -36,8 +36,8 @@ public function __construct()
     		return response()->json($response, 500);
     	}
          $response["status"] = "ok";
-        $response["token"] = compact('token');
-    	return response()->json($response);
+        $response["token"] = $token;   	
+        return response()->json($response);
     }
     public function index()
     {
