@@ -35,7 +35,9 @@ public function __construct()
             $response["message"] = "could not create token";
     		return response()->json($response, 500);
     	}
-    	return response()->json(compact('token'));
+         $response["status"] = "ok";
+        $response["token"] = compact('token');
+    	return response()->json($response);
     }
     public function index()
     {
