@@ -24,12 +24,16 @@ public function __construct()
 
     	try {
     		if (! $token = JWTAuth::attempt($credentials)){
-    			return response()->json(['error'=> 'invalid credentials'], 401);
+                $response["status"] = "error";
+                $response["message"] = "invalid credentials";
+    			return response()->json($response, 401);
     		}
 
     	}
     	catch (JWTException $e){
-    		return response()->json(['error' => 'could_not_create_token'], 500);
+              $response["status"] = "error";
+            $response["message"] = "could not create token";
+    		return response()->json($response, 500);
     	}
     	return response()->json(compact('token'));
     }
