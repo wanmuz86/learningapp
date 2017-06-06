@@ -47,6 +47,14 @@ public function __construct()
     return $user;
 }
 
+public function getUser(Request $request){
+  $userInfo = Auth::user();
+  $user["name"] = $userInfo["name"];
+  $user["email"] = $userInfo["email"];
+  $user["avatar"] = "http://ec2-54-254-137-23.ap-southeast-1.compute.amazonaws.com/backend/storage/app/public/".$userInfo["avatar"];
+  return response()->json($user);
+}
+
 public function register(Request $request){
     $email = $request->input('email');
     $password = $request->input('password');
