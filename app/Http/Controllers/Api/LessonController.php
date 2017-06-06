@@ -63,7 +63,6 @@ class LessonController extends Controller
         $user->lessons()->sync($lesson);
 
         $courseUpdate = DB::table('courses_users')->select('*')->where('course_id', '=', $lesson["course_id"])->where('user_id', '=', $user_id)->first();
-        var_dump($courseUpdate);
 
         $counter = $courseUpdate->lessons_completed+1;
         DB::table('courses_users')->where('course_id','=',$lesson["course_id"])->where('user_id','=',$user_id)->update(['lessons_completed'=> $counter]);
