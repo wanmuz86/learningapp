@@ -60,9 +60,11 @@ class LessonController extends Controller
         $lessonId = $request->input('lesson_id');
         $lesson = Lesson::find($lessonId);
         $user = User::where('email', $userId)->first();
-        $user->lessons()->save();
+        $user->lessons()->sync($lesson);
 
         $courseUpdate = DB::table('courses_users')->select('*')->where('course_id', '=', $lesson["course_id"])->where('user_id', '=', $user_id)->first();
+        var_dump($courseUpdate);
+
         $counter = $courseUpdate->lessons_completed+1;
         DB::table('courses_users')->where('course_id','=',$lesson["course_id"])->where('user_id','=',$user_id)->update(['lessons_completed'=> $counter]);
         $response["status"] = "ok";
