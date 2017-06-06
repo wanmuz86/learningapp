@@ -52,7 +52,9 @@ public function getUser(Request $request){
   $user["name"] = $userInfo["name"];
   $user["email"] = $userInfo["email"];
   $user["avatar"] = "http://ec2-54-254-137-23.ap-southeast-1.compute.amazonaws.com/backend/storage/app/public/".$userInfo["avatar"];
-  return response()->json($user);
+  $response["status"] = "ok";
+  $response["data"] = $user;
+  return response()->json($response);
 }
 
 public function register(Request $request){
