@@ -48,6 +48,7 @@ Route::post('api/lessonByUser/', 'Api\LessonController@lessonByUser');
 
 Route::post('api/login/', 'LoginController@login');
 Route::post('api/getUser/', 'AuthenticateController@getUser');
+Route::post('api/updateUser/', 'AuthenticateController@updateUser');
 
 Route::group(['prefix' => 'api'], function()
 {

@@ -78,4 +78,14 @@ public function register(Request $request){
     }
 }
 
+public function updateUser(Request $request){
+  $user = Auth::user();
+  $user->name = $request->input('name');
+  //$user->email = $request->input('email');
+  $user->save();
+  $response["status"] = "ok";
+  $response["data"] = $user;
+  return response()->json($response);
+}
+
 }
