@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use TCG\Voyager\Http\Controllers\VoyagerBreadController as VoyagerBreadController;
 use TCG\Voyager\Facades\Voyager;
+use Auth;
 class BadgeController extends VoyagerBreadController
 {
 
