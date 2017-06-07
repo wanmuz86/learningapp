@@ -40,7 +40,7 @@ Route::get('api/quizbycourse/{id}', 'QuizController@getQuiz');
 
 Route::post('api/coursebyuserold/', 'CourseController@coursesByUserold');
 
-Route::post('api/purchasecourse/', 'CourseController@purchaseCourse');
+Route::post('api/purchasecourse/', 'Api\CourseController@purchaseCourse');
 Route::post('api/usercatalog/', 'Api\CourseController@catalogByUser');
 
 Route::post('api/updateLesson/', 'Api\LessonController@updateLesson');
