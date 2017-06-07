@@ -1,6 +1,6 @@
 <?php
 
-namespace TCG\Voyager\Models;
+namespace App;
 
 use Carbon\Carbon;
 use Illuminate\Foundation\Auth\User as AuthUser;

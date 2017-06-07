@@ -33,7 +33,7 @@ Route::post('api/coursesbyUser/', 'Api\CourseController@coursesbyUser');
 
 Route::get('api/badges/', 'BadgeController@getAllBadge');
 
-Route::post('api/badgesbyUser/', 'BadgeController@badgesbyUser');
+Route::post('api/badgesbyUser/', 'Api\BadgeController@badgesbyUser');
 
 Route::get('api/quizbycourse/{id}', 'QuizController@getQuiz');
 
