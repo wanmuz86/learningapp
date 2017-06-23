@@ -23,7 +23,7 @@ Route::group(['prefix' => 'admin'], function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index');
-Route::get('admin/lessons/create/course/{id}', 'LessonController@createWithId');
+Route::get('admin/courses/{id}/lessons/create', 'LessonController@createWithId');
 
 Route::get('api/lesson/{id}', 'LessonController@getLesson');
 

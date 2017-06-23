@@ -36,7 +36,7 @@ class LessonController extends VoyagerBreadController
                             : false;
 
         // Check if BREAD is Translatable
-        $isModelTranslatable = isBreadTranslatable($dataTypeContent);
+        $isModelTranslatable = false;
 
         $view = 'voyager::bread.edit-add';
 
@@ -44,7 +44,7 @@ class LessonController extends VoyagerBreadController
             $view = "voyager::$slug.edit-add";
         }
 
-        return view('lessons/create', compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'id'));
+        return view('lessons/create_lesson', compact('dataType', 'dataTypeContent', 'isModelTranslatable', 'id'));
       
     }
  
